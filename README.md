@@ -2,7 +2,12 @@
 
 DockerSim is a modular and extensible container cluster simulation framework written in Go, designed to benchmark and evaluate container scheduling strategies over a heterogeneous node infrastructure. It integrates real Docker containers and collects fine-grained metrics to analyze scheduler performance under diverse workloads.
 
-The two folders are two versions of the porject one with real (containerssimulationdocker/cc_go  | [simulation](https://github.com/pranav11024/Container-Scheduler-Orchestration-Benchmark/tree/main/simulation/cc_go) |), and with simulated containers(simulation/cc_go  | [simulation](https://github.com/pranav11024/Container-Scheduler-Orchestration-Benchmark/tree/main/simulationdocker/cc_go) |)
+There are two versions of this project:
+
+- The [simulated container version](https://github.com/pranav11024/Container-Scheduler-Orchestration-Benchmark/tree/main/simulation/cc_go) (`simulation/cc_go`) uses mock containers to run a lightweight simulation without Docker.
+- The [real Docker container version](https://github.com/pranav11024/Container-Scheduler-Orchestration-Benchmark/tree/main/simulationdocker/cc_go) (`simulationdocker/cc_go`) uses Docker Engine API to deploy and manage actual containers for realistic benchmarking.
+
+> Both versions share a common architecture, workload engine, and metric collection framework. The only difference lies in how containers are managed (mock vs. Docker).
 
 ## Features
 
