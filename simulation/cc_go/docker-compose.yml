@@ -1,0 +1,35 @@
+version: '3'
+
+services:
+  scheduler:
+    build: .
+    volumes:
+      - ./results:/app/results
+    command: ["--scheduler=adaptive", "--workload=workloads/mixed_workload.json", "--output=results/adaptive_results.csv", "--duration=300"]
+    environment:
+      - DOCKER_HOST=unix:///var/run/docker.sock
+    networks:
+      - scheduler_net
+
+  scheduler-binpack:
+    build: .
+    volumes:
+      - ./results:/app/results
+    command: ["--scheduler=binpack", "--workload=workloads/mixed_workload.json", "--output=results/binpack_results.csv", "--duration=300"]
+    environment:
+      - DOCKER_HOST=unix:///var/run/docker.sock
+    networks:
+      - scheduler_net
+
+  scheduler-spread:
+    build: .
+    volumes:
+      - ./results:/app/results
+    command: ["--scheduler=spread", "--workload=workloads/mixed_workload.json", "--output=results/spread_results.csv", "--duration=300"]
+    environment:
+      - DOCKER_HOST=unix:///var/run/docker.sock
+    networks:
+      - scheduler_net
+
+networks:
+  scheduler_net:
